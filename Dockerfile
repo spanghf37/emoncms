@@ -18,11 +18,11 @@ RUN pear channel-discover pear.apache.org/log4php
 RUN pear install log4php/Apache_log4php
 # RUN pecl install channel://pecl.php.net/dio-0.0.6 redis swift/swift
 
-# Add pecl modules to php5 configuration
-RUN sh -c 'echo "extension=dio.so" > /etc/php5/apache2/conf.d/20-dio.ini'
-RUN sh -c 'echo "extension=dio.so" > /etc/php5/cli/conf.d/20-dio.ini'
-RUN sh -c 'echo "extension=redis.so" > /etc/php5/apache2/conf.d/20-redis.ini'
-RUN sh -c 'echo "extension=redis.so" > /etc/php5/cli/conf.d/20-redis.ini'
+# Add pecl modules to php7 configuration
+RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/apache2/conf.d/20-dio.ini'
+RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/cli/conf.d/20-dio.ini'
+RUN sh -c 'echo "extension=redis.so" > /etc/php/7.0/apache2/conf.d/20-redis.ini'
+RUN sh -c 'echo "extension=redis.so" > /etc/php/7.0/cli/conf.d/20-redis.ini'
 
 # Enable modrewrite for Apache2
 RUN a2enmod rewrite

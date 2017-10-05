@@ -4,14 +4,19 @@ COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static
   
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
-RUN apt-get -yq install supervisor apache2 mysql-server mysql-client php libapache2-mod-php php-mysql php-curl php-pear \
-    php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp pwgen
+#RUN apt-get -yq install supervisor apache2 mysql-server mysql-client php libapache2-mod-php php-mysql php-curl php-pear \
+#    php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp pwgen
+
+RUN apt-get install apache2 mysql-server mysql-client php libapache2-mod-php php-mysql php-curl php-pear php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp -y
 
 # Install pecl dependencies
 RUN pear channel-discover pear.swiftmailer.org
+RUN pecl install swift/swift dio-0.0.9 redis
+
+# RUN pear channel-discover pear.swiftmailer.org
 RUN pear channel-discover pear.apache.org/log4php
 RUN pear install log4php/Apache_log4php
-RUN pecl install channel://pecl.php.net/dio-0.0.6 redis swift/swift
+# RUN pecl install channel://pecl.php.net/dio-0.0.6 redis swift/swift
 
 # Add pecl modules to php5 configuration
 RUN sh -c 'echo "extension=dio.so" > /etc/php5/apache2/conf.d/20-dio.ini'

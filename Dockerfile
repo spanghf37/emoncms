@@ -4,8 +4,8 @@ COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static
   
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
-RUN apt-get -yq install supervisor apache2 mysql-server mysql-client php5 libapache2-mod-php5 php5-mysql php5-curl php-pear \
-    php5-dev php5-mcrypt php5-json git-core redis-server build-essential ufw ntp pwgen
+RUN apt-get -yq install supervisor apache2 mysql-server mysql-client php libapache2-mod-php php-mysql php-curl php-pear \
+    php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp pwgen
 
 # Install pecl dependencies
 RUN pear channel-discover pear.swiftmailer.org

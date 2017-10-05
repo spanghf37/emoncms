@@ -13,10 +13,14 @@ RUN apt-get install apache2 mysql-server mysql-client php libapache2-mod-php php
 RUN pear channel-discover pear.swiftmailer.org
 RUN pecl install swift/swift dio-0.0.9 redis
 
-# RUN pear channel-discover pear.swiftmailer.org
-RUN pear channel-discover pear.apache.org/log4php
-RUN pear install log4php/Apache_log4php
-# RUN pecl install channel://pecl.php.net/dio-0.0.6 redis swift/swift
+# RUN pear channel-discover pear.apache.org/log4php
+# RUN pear install log4php/Apache_log4php
+
+RUN mkdir log4php
+RUN cd log4php
+RUN wget http://www-eu.apache.org/dist/logging/log4php/2.3.0/apache-log4php-2.3.0-src.tar.gz
+RUN tar xzvf apache-log4php-2.3.0-src.tar.gz
+RUN require_once( 'src/main/php/Logger.php' )
 
 # Add pecl modules to php7 configuration
 RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/apache2/conf.d/20-dio.ini'

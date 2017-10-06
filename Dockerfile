@@ -8,6 +8,7 @@ RUN apt-get update
 #    php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp pwgen
 
 RUN apt-get install apache2 mysql-server mysql-client php libapache2-mod-php php-mysql php-curl php-pear php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp -y
+RUN apt-get install wget
 
 # Install pecl dependencies
 RUN pear channel-discover pear.swiftmailer.org
@@ -18,9 +19,10 @@ RUN pecl install swift/swift dio-0.0.9 redis
 
 RUN mkdir log4php
 RUN cd log4php
-RUN wget http://www-eu.apache.org/dist/logging/log4php/2.3.0/apache-log4php-2.3.0-src.tar.gz
-RUN tar xzvf apache-log4php-2.3.0-src.tar.gz
-RUN require_once( 'src/main/php/Logger.php' )
+# RUN wget http://www-eu.apache.org/dist/logging/log4php/2.3.0/apache-log4php-2.3.0-src.tar.gz
+# RUN tar xzvf apache-log4php-2.3.0-src.tar.gz
+RUN wget http://www.apache.org/dyn/closer.cgi/logging/log4php/2.3.0/Apache_log4php-2.3.0.tgz
+RUN pear install Apache_log4php-2.3.0.tgz
 
 # Add pecl modules to php7 configuration
 RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/apache2/conf.d/20-dio.ini'

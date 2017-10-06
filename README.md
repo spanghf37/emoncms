@@ -10,14 +10,6 @@ Copy and edit ```config.json``` and ```knx_config.json``` to ```/home/docker/hom
 # 2. docker run command
 
 ```
-docker run --restart=alway -t -i --rm=true --net=host \
-      -v "/etc/mysql":"/tmp/mysql" \
-	  -v "/var/lib/mysql":"/tmp/mysql" \
-	  -v "/var/lib/phpfiwa":"/tmp/phpfiwa" \
-	  -v "/var/lib/phpfina":"/tmp/phpfina" \
-	  -v "/var/lib/phptimeseries":"/tmp/phptimeseries" \
-	  -v "/var/www/html":"/tmp/html" \
-	  -v "/etc/localtime":"/etc/localtime":ro \
-      spanghf37/emoncms:latest
+docker run --restart=always -t -i --net=host -v "/etc/mysql":"/tmp/mysql" -v "/var/lib/mysql":"/tmp/mysql" -v "/var/lib/phpfiwa":"/tmp/phpfiwa" -v "/var/lib/phpfina":"/tmp/phpfina" -v "/var/lib/phptimeseries":"/tmp/phptimeseries" -v "/var/www/html":"/tmp/html" -v "/etc/localtime":"/etc/localtime":ro spanghf37/emoncms:latest
 ```
 Change tmp to your preferred location on the host.

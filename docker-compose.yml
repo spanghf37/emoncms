@@ -7,7 +7,7 @@ services:
   # PHP & apache container using offical Docker PHP iamge
   web:
     # If pre-built image from docker hub exists then use that (docker pull openenergymonitor/emoncms) if not Buildcontainer see Dockerflile
-    image: openenergymonitor/emoncms
+    image: spanghf37/emoncms
     build: .
     volumes:
       # mount docker volumes persistant inside docker container

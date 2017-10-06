@@ -22,7 +22,7 @@ RUN cd log4php
 # RUN wget http://www-eu.apache.org/dist/logging/log4php/2.3.0/apache-log4php-2.3.0-src.tar.gz
 # RUN tar xzvf apache-log4php-2.3.0-src.tar.gz
 RUN wget http://www-eu.apache.org/dist/logging/log4php/2.3.0/Apache_log4php-2.3.0.tgz
-RUN pear install Apache_log4php-2.3.0.tgz
+RUN pear install --offline Apache_log4php-2.3.0.tgz
 
 # Add pecl modules to php7 configuration
 RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/apache2/conf.d/20-dio.ini'

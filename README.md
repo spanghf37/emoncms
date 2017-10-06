@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/spanghf37/homebridge-knx.svg?branch=master)
+![Build Status](https://travis-ci.org/spanghf37/emoncms.svg?branch=master)
 
 # emoncms
 emoncms docker container for raspberry-pi 64bits

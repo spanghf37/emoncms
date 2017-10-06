@@ -1,0 +1,47 @@
+# Base docker compose, added to by docker-compose.override or docker-compose.prod. See Readme.md
+
+version: '2'
+
+services:
+
+  # PHP & apache container using offical Docker PHP iamge
+  web:
+    # If pre-built image from docker hub exists then use that (docker pull openenergymonitor/emoncms) if not Buildcontainer see Dockerflile
+    image: openenergymonitor/emoncms
+    build: .
+    volumes:
+      # mount docker volumes persistant inside docker container
+      - emon-phpfiwa:/var/lib/phpfiwa
+      - emon-phpfina:/var/lib/phpfina
+      - emon-phptimeseries:/var/lib/phptimeseries
+    links:
+      # Link to MYSQL DB (see below)
+      - db
+      - redis
+
+  # MYSQL Database
+  db:
+    # Official MYSQL docker image
+    # To do: make compatiable with 5.7
+    image: mysql:5.6
+    environment:
+      - "MYSQL_HOST=localhost"
+    volumes:
+      - emon-db-data:/var/lib/mysql/data
+  redis:
+    # Official redis image
+    image: redis:3.0.7
+    volumes:
+      - emon-redis-data:/data
+
+volumes:
+  emon-phpfiwa:
+    driver: local
+  emon-phpfina:
+    driver: local
+  emon-phptimeseries:
+    driver: local
+  emon-db-data:
+    driver: local
+  emon-redis-data:
+    driver: local

@@ -1,4 +1,4 @@
-FROM arm64v8/debian:latest
+FROM arm64v8/php:latest
 
 COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static   
   

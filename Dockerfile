@@ -15,7 +15,7 @@ RUN apt-get install wget -y
 RUN pear channel-discover pear.swiftmailer.org
 RUN pecl install swift/swift dio-0.0.9 redis
 
-RUN docker-php-ext-install -j$(nproc) mysql mysqli curl json mcrypt gettext
+RUN docker-php-ext-install -j$(nproc) mysqli curl json mcrypt gettext
 RUN pecl install redis-2.2.8 \
   \ && docker-php-ext-enable redis
   

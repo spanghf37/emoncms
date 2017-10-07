@@ -32,10 +32,10 @@ RUN pear channel-add channel.xml
 RUN pear install Apache_log4php-2.3.0.tgz
 
 # Add pecl modules to php7 configuration
-RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/apache2/conf.d/20-dio.ini'
-RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/cli/conf.d/20-dio.ini'
-RUN sh -c 'echo "extension=redis.so" > /etc/php/7.0/apache2/conf.d/20-redis.ini'
-RUN sh -c 'echo "extension=redis.so" > /etc/php/7.0/cli/conf.d/20-redis.ini'
+# RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/apache2/conf.d/20-dio.ini'
+# RUN sh -c 'echo "extension=dio.so" > /etc/php/7.0/cli/conf.d/20-dio.ini'
+# RUN sh -c 'echo "extension=redis.so" > /etc/php/7.0/apache2/conf.d/20-redis.ini'
+# RUN sh -c 'echo "extension=redis.so" > /etc/php/7.0/cli/conf.d/20-redis.ini'
 
 # Enable modrewrite for Apache2
 RUN a2enmod rewrite

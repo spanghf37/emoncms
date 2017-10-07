@@ -47,7 +47,8 @@ COPY config/php.ini /usr/local/etc/php/
 RUN cd /var/www/html
 RUN git clone https://github.com/emoncms/emoncms.git
 RUN git clone https://github.com/emoncms/dashboard.git /var/www/html/emoncms/Modules
-RUN git clone https://github.com/emoncms/graph.git /var/www/html/emoncms/Modules
+RUN cd /var/www/html/emoncms/Modules
+RUN git clone https://github.com/emoncms/graph.git 
 
 # Copy in settings from defaults
 WORKDIR /var/www/html

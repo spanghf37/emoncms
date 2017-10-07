@@ -51,7 +51,7 @@ RUN cd /var/www/html/emoncms/Modules
 RUN git clone https://github.com/emoncms/graph.git 
 
 # Copy in settings from defaults
-WORKDIR /var/www/html
+WORKDIR /var/www/html/emoncms/
 RUN cp default.settings.php settings.php
 
 # Create folders & set permissions for feed-engine data folders (mounted as docker volumes in docker-compose)

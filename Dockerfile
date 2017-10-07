@@ -16,8 +16,8 @@ RUN pear channel-discover pear.swiftmailer.org
 RUN pecl install swift/swift dio-0.0.9 redis
 
 RUN docker-php-ext-install -j$(nproc) mysqli curl json mcrypt gettext
-RUN pecl install redis-2.2.8 \
-  \ && docker-php-ext-enable redis
+# RUN pecl install redis-2.2.8 \
+RUN docker-php-ext-enable redis
   
 # RUN pear channel-discover pear.apache.org/log4php
 # RUN pear install log4php/Apache_log4php

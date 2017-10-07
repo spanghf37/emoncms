@@ -44,9 +44,11 @@ RUN a2enmod rewrite
 COPY config/php.ini /usr/local/etc/php/
 
 # Clone in master Emoncms repo & modules - overwritten in development with local FS files
-RUN git clone https://github.com/emoncms/emoncms.git /var/www/html
-RUN git clone https://github.com/emoncms/dashboard.git /var/www/html/Modules/dashboard
-RUN git clone https://github.com/emoncms/graph.git /var/www/html/Modules/graph
+RUN cd /var/www/html
+RUN git clone -b https://github.com/emoncms/emoncms.git
+RUN cd /var/www/html/emoncms/Modules
+RUN git clone https://github.com/emoncms/dashboard.git
+RUN git clone https://github.com/emoncms/graph.git
 
 # Copy in settings from defaults
 WORKDIR /var/www/html

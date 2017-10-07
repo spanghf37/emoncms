@@ -8,7 +8,7 @@ RUN apt-get update
 #    php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp pwgen
 # RUN apt-get install apache2 libcurl4-gnutls-dev mysql-server mysql-client php libapache2-mod-php php-mysql php-curl php-pear php-dev php-mcrypt php-json git-core redis-server build-essential ufw ntp -y
 
-RUN apt-get install apache2 libcurl4-gnutls-dev mysql-server mysql-client git-core redis-server build-essential ufw ntp -y
+RUN apt-get install apache2 libcurl4-gnutls-dev mysql-server mysql-client git-core redis-server build-essential ufw ntp libmcrypt-dev -y
 RUN apt-get install wget -y
 
 # Install pecl dependencies

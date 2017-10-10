@@ -46,9 +46,8 @@ COPY config/php.ini /usr/local/etc/php/
 # Clone in master Emoncms repo & modules - overwritten in development with local FS files
 WORKDIR /var/www/html
 RUN git clone -b stable https://github.com/emoncms/emoncms.git
-WORKDIR /var/www/html
-RUN ls
-RUN git clone https://github.com/emoncms/dashboard.git /var/www/html/emoncms/Modules
+WORKDIR /var/www/html/emoncms/Modules
+RUN git clone https://github.com/emoncms/dashboard.git
 WORKDIR /var/www/html/emoncms/Modules
 RUN git clone https://github.com/emoncms/graph.git 
 

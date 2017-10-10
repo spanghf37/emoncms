@@ -15,16 +15,16 @@ script:
 # build image
 # - docker build -t spanghf37/emoncms .
 
-  # Setup your application stack. You may need to tweak these commands if you
-  # doing out-of-the-ordinary docker-compose builds.
-  - docker-compose pull
-  - docker-compose build
-  - docker-compose start
+# Setup your application stack. You may need to tweak these commands if you
+# doing out-of-the-ordinary docker-compose builds.
+- docker-compose pull
+- docker-compose build
+- docker-compose start
 
-  # You will want this for logging. If one of your containers does not build for
-  # whatever reason it's best to report that now before your tests start
-  # otherwise it can be really tricky to debug why tests are failing sometimes.
-  - docker ps
+# You will want this for logging. If one of your containers does not build for
+# whatever reason it's best to report that now before your tests start
+# otherwise it can be really tricky to debug why tests are failing sometimes.
+- docker ps
   
 # test image
 - docker run spanghf37/emoncms uname -a

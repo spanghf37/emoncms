@@ -17,7 +17,13 @@ script:
 
 # Setup your application stack. You may need to tweak these commands if you
 # doing out-of-the-ordinary docker-compose builds.
-- sudo ./bin/setup_dev_repositories
+- git clone https://github.com/spanghf37/emoncms.git ./emoncms-docker
+- git clone https://github.com/emoncms/emoncms.git ./emoncms
+- git clone https://github.com/emoncms/dashboard.git ./emoncms/Modules/dashboard
+- git clone https://github.com/emoncms/graph.git ./emoncms/Modules/graph
+
+# Use docker settings
+- cp  docker.settings.php ./emoncms/settings.php
 
 - docker-compose build
 - docker-compose up

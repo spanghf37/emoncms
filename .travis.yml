@@ -17,6 +17,8 @@ script:
 
 # Setup your application stack. You may need to tweak these commands if you
 # doing out-of-the-ordinary docker-compose builds.
+- ./bin/setup_dev_repositories
+
 - docker-compose build
 - docker-compose up
 

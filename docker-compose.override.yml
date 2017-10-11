@@ -9,7 +9,7 @@ services:
       - 8080:80
     volumes:
       #mount emoncms files from local FS for dev
-      - ./emoncms:/var/www/html
+      - ./emoncms:/var/www/html/emoncms
     env_file:
       # Use default enviroment variables file for dev
       - 'default.docker-env'

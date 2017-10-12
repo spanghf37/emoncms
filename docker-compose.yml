@@ -23,14 +23,15 @@ services:
   db:
     # Official MYSQL docker image
     # To do: make compatiable with 5.7
-    image: mysql:5.6
+    # image: mysql:5.6
+    image: amd64/mysql:latest
     environment:
       - "MYSQL_HOST=localhost"
     volumes:
       - emon-db-data:/var/lib/mysql/data
   redis:
     # Official redis image
-    image: redis:3.0.7
+    image: amd64/redis:latest
     volumes:
       - emon-redis-data:/data
 

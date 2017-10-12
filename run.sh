@@ -9,6 +9,7 @@ git clone https://github.com/emoncms/graph.git ./emoncms/Modules/graph
 cp  docker.settings.php ./emoncms/settings.php
 
 cd emoncms-docker
-docker pull spanghf37/emoncms:latest
+# docker pull spanghf37/emoncms:latest
+docker pull emoncms/emoncms:latest
 docker-compose up
 docker ps

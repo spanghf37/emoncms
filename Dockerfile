@@ -31,15 +31,16 @@ COPY config/php.ini /usr/local/etc/php/
 
 # Clone in master Emoncms repo & modules - overwritten in development with local FS files
 WORKDIR /var/www/html
-RUN git clone -b stable https://github.com/emoncms/emoncms.git
+RUN git clone https://github.com/emoncms/emoncms.git
 WORKDIR /var/www/html/emoncms/Modules
 RUN git clone https://github.com/emoncms/dashboard.git
 WORKDIR /var/www/html/emoncms/Modules
 RUN git clone https://github.com/emoncms/graph.git 
 
 # Copy in settings from defaults
-WORKDIR /var/www/html/emoncms/
-RUN cp default.settings.php settings.php
+# WORKDIR /var/www/html/emoncms/
+# RUN cp default.settings.php settings.php
+COPY docker.settings.php /var/www/html/settings.php
 
 # Create folders & set permissions for feed-engine data folders (mounted as docker volumes in docker-compose)
 RUN mkdir /var/lib/phpfiwa

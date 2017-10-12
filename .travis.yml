@@ -35,10 +35,9 @@ script:
 # test image
 # - docker run spanghf37/emoncms uname -a
 # push image
-- >
-    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    docker tag spanghf37/emoncms spanghf37/emoncms:amd64
-    docker push spanghf37/emoncms:amd64
+- docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+- docker tag spanghf37/emoncms spanghf37/emoncms:amd64
+- docker push spanghf37/emoncms:amd64
 
 - cd emoncms-docker
 - docker pull spanghf37/emoncms:latest

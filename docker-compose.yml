@@ -28,7 +28,8 @@ services:
     environment:
       - "MYSQL_HOST=localhost"
     volumes:
-      - emon-db-data:/var/lib/mysql/data
+    #  - emon-db-data:/var/lib/mysql/data
+      - emon-db-data:/var/lib/mysql
   redis:
     # Official redis image
     image: amd64/redis:latest
@@ -43,6 +44,6 @@ volumes:
   emon-phptimeseries:
     driver: local
   emon-db-data:
-    driver: local
+ #   driver: local
   emon-redis-data:
     driver: local

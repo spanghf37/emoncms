@@ -1,6 +1,7 @@
-FROM arm64v8/php:latest
+# FROM arm64v8/php:latest
+FROM amd64/php:latest
 
-COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static   
+# COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static   
   
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update

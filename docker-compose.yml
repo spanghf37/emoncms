@@ -8,7 +8,7 @@ services:
   web:
     # If pre-built image from docker hub exists then use that (docker pull openenergymonitor/emoncms) if not Buildcontainer see Dockerflile
     # image: spanghf37/emoncms
-    image: emoncms/emoncms
+    image: openenergymonitor/emoncms
     build: .
     volumes:
       # mount docker volumes persistant inside docker container

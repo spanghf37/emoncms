@@ -10,6 +10,6 @@ cp  docker.settings.php ./emoncms/settings.php
 
 cd emoncms-docker
 # docker pull spanghf37/emoncms:latest
-docker pull emoncms/emoncms:latest
+docker pull openenergymonitor/emoncms:latest
 docker-compose up
 docker ps

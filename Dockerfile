@@ -46,7 +46,7 @@ RUN git clone https://github.com/emoncms/graph.git
 # Copy in settings from defaults
 # WORKDIR /var/www/html/emoncms/
 # RUN cp default.settings.php settings.php
-COPY docker.settings.php /var/www/html/settings.php
+COPY docker.settings.php /var/www/html/emoncms/settings.php
 
 # Create folders & set permissions for feed-engine data folders (mounted as docker volumes in docker-compose)
 RUN mkdir /var/lib/phpfiwa

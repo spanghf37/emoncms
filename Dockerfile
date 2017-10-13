@@ -5,6 +5,7 @@ FROM amd64/php:apache-jessie
   
 # ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
+RUN apt-get upgrade
 
 RUN apt-get install libcurl4-gnutls-dev php-curl php-json php-mcrypt php-mysql git-core libmcrypt-dev -y
 RUN apt-get install wget -y

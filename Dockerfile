@@ -6,14 +6,14 @@ FROM amd64/php:apache-jessie
 # ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
-RUN apt-get install apache2 libcurl4-gnutls-dev mysql-server mysql-client git-core redis-server build-essential ufw ntp libmcrypt-dev -y
+RUN apt-get install apache2 libcurl4-gnutls-dev git-core libmcrypt-dev -y
 RUN apt-get install wget -y
 
 # Install pecl dependencies
 RUN pear channel-discover pear.swiftmailer.org
 RUN pecl install swift/swift dio-0.0.9 redis
 
-RUN docker-php-ext-install -j$(nproc) mysqli curl json mcrypt gettext
+RUN docker-php-ext-install -j$(nproc) mysql mysqli curl json mcrypt gettext
 RUN docker-php-ext-enable redis
 
 RUN mkdir log4php

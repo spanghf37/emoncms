@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get upgrade
 RUN apt-get dist-upgrade -y
 
-RUN apt-get install libcurl4-gnutls-dev php-curl php-json php-mcrypt php-mysql git-core libmcrypt-dev -y
+RUN apt-get install libcurl4-gnutls-dev php7.1-curl php7.1-json php7.1-mcrypt php7.1-mysql git-core libmcrypt-dev -y
 RUN apt-get install wget -y
 
 # Install pecl dependencies

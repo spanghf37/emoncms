@@ -1,9 +1,9 @@
 # FROM arm64v8/php:latest
-FROM amd64/php:latest
+FROM amd64/php:apache-jessie
 
 # COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static   
   
-ENV DEBIAN_FRONTEND noninteractive
+# ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
 RUN apt-get install apache2 libcurl4-gnutls-dev mysql-server mysql-client git-core redis-server build-essential ufw ntp libmcrypt-dev -y

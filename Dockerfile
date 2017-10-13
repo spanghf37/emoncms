@@ -6,7 +6,7 @@ FROM amd64/php:apache-jessie
 # ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 
-RUN apt-get install apache2 libcurl4-gnutls-dev git-core libmcrypt-dev -y
+RUN apt-get install libcurl4-gnutls-dev php-curl php-json php-mcrypt git-core libmcrypt-dev -y
 RUN apt-get install wget -y
 
 # Install pecl dependencies

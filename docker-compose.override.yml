@@ -13,10 +13,13 @@ services:
     env_file:
       # Use default enviroment variables file for dev
       - 'default.docker-env'
+    restart: always
 
   db:
     env_file:
       - 'default.docker-env'
+    restart: always
   redis:
     env_file:
       - 'default.docker-env'
+    restart: always

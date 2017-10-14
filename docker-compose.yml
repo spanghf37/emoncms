@@ -11,9 +11,9 @@ services:
     build: .
     volumes:
       # mount docker volumes persistant inside docker container
-      - /mnt/data/configs/emoncms/emon-phpfiwa:/var/lib/phpfiwa
-      - /mnt/data/configs/emoncms/emon-phpfina:/var/lib/phpfina
-      - /mnt/data/configs/emoncms/emon-phptimeseries:/var/lib/phptimeseries
+      - ./mnt/data/configs/emoncms/emon-phpfiwa:/var/lib/phpfiwa
+      - ./mnt/data/configs/emoncms/emon-phpfina:/var/lib/phpfina
+      - ./mnt/data/configs/emoncms/emon-phptimeseries:/var/lib/phptimeseries
     links:
       # Link to MYSQL DB (see below)
       - db
@@ -26,12 +26,12 @@ services:
     environment:
       - "MYSQL_HOST=localhost"
     volumes:
-      - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
+      - ./mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
   redis:
     # Official redis image
     image: amd64/redis:latest
     volumes:
-      - emon-redis-data:/data
+      - ./mnt/data/configs/emoncms/emon-redis-data:/data
 
 volumes:
   emon-phpfiwa:

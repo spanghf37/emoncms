@@ -1,6 +1,6 @@
 # Base docker compose, added to by docker-compose.override or docker-compose.prod. See Readme.md
 
-version: '2'
+version: '3'
 
 services:
 
@@ -11,9 +11,9 @@ services:
     build: .
     volumes:
       # mount docker volumes persistant inside docker container
-      - emon-phpfiwa:/var/lib/phpfiwa
-      - emon-phpfina:/var/lib/phpfina
-      - emon-phptimeseries:/var/lib/phptimeseries
+      - /mnt/data/configs/emoncms/emon-phpfiwa:/var/lib/phpfiwa
+      - /mnt/data/configs/emoncms/emon-phpfina:/var/lib/phpfina
+      - /mnt/data/configs/emoncms/emon-phptimeseries:/var/lib/phptimeseries
     links:
       # Link to MYSQL DB (see below)
       - db
@@ -22,14 +22,11 @@ services:
   # MYSQL Database
   db:
     # Official MYSQL docker image
-    # To do: make compatiable with 5.7
-    # image: mysql:5.6
     image: amd64/mysql:latest
     environment:
       - "MYSQL_HOST=localhost"
     volumes:
-    #  - emon-db-data:/var/lib/mysql/data
-      - emon-db-data:/var/lib/mysql
+      - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
   redis:
     # Official redis image
     image: amd64/redis:latest
@@ -38,12 +35,12 @@ services:
 
 volumes:
   emon-phpfiwa:
-    driver: local
+ #   driver: local
   emon-phpfina:
-    driver: local
+ #   driver: local
   emon-phptimeseries:
-    driver: local
+ #   driver: local
   emon-db-data:
  #   driver: local
   emon-redis-data:
-    driver: local
+ #   driver: local

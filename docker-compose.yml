@@ -32,6 +32,7 @@ services:
     image: amd64/redis:latest
     volumes:
       - /mnt/data/configs/emoncms/emon-redis-data:/data
+    command: ["chown", "www-data:root", "/var/lib/phpfiwa", "&&", "chown", "www-data:root", "/var/lib/phpfina", "&&", "chown", "www-data:root", "/var/lib/phptimeseries"]
 
 volumes:
   emon-phpfiwa:

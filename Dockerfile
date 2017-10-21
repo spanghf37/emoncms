@@ -59,3 +59,5 @@ RUN chown www-data:root /var/lib/phptimeseries
 # Create Emoncms logfile
 RUN touch /var/log/emoncms.log
 RUN chmod 666 /var/log/emoncms.log
+
+CMD   ["chown", "www-data:root", "/var/lib/phpfiwa", "chown", "www-data:root", "/var/lib/phpfina", "chown www-data:root", "/var/lib/phptimeseries"]

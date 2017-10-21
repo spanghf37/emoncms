@@ -19,9 +19,12 @@ services:
       - db
       - redis
     command: 
-      - chown www-data:root /var/lib/phpfiwa
-      - chown www-data:root /var/lib/phpfina
-      - chown www-data:root /var/lib/phptimeseries
+      - /bin/sh
+      - -c
+      - |
+          chown www-data:root /var/lib/phpfiwa
+          chown www-data:root /var/lib/phpfina
+          chown www-data:root /var/lib/phptimeseries
   # MYSQL Database
   db:
     # Official MYSQL docker image

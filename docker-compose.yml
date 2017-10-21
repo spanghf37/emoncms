@@ -18,13 +18,6 @@ services:
       # Link to MYSQL DB (see below)
       - db
       - redis
-    command: [sh, -c, "chown www-data:root /var/lib/phpfiwa"]
-      #- /bin/sh
-      #- -c
-      #- |
-      #    chown www-data:root /var/lib/phpfiwa
-      #    chown www-data:root /var/lib/phpfina
-      #    chown www-data:root /var/lib/phptimeseries
   # MYSQL Database
   db:
     # Official MYSQL docker image

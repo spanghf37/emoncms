@@ -61,4 +61,11 @@ RUN chown -R www-data:root /var/lib/phptimeseries
 RUN touch /var/log/emoncms.log
 RUN chmod 666 /var/log/emoncms.log
 
-CMD ["/bin/sh", "-c", "chown www-data:root /var/lib/phpfiwa"]
+# Install composer in /usr/lib folder
+WORKDIR /usr/lib
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && php composer-setup.php \
+    && php -r "unlink('composer-setup.php');"
+
+# Install swiftmailer
+RUN php /usr/lib/composer.phar require swiftmailer/swiftmailer @stable

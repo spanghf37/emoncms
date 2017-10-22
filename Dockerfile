@@ -60,4 +60,4 @@ RUN chown www-data:root /var/lib/phptimeseries
 RUN touch /var/log/emoncms.log
 RUN chmod 666 /var/log/emoncms.log
 
-CMD   ["/bin/sh", "-c", "chown", "www-data:root", "/var/lib/phpfiwa", "chown", "www-data:root", "/var/lib/phpfina", "chown www-data:root", "/var/lib/phptimeseries"]
+CMD   ["/bin/sh", "-c", "chown", "www-data:root", "/var/lib/phpfiwa"]

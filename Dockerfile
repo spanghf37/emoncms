@@ -41,7 +41,8 @@ RUN git clone https://github.com/emoncms/emoncms.git
 WORKDIR /var/www/html/emoncms/Modules
 RUN git clone https://github.com/emoncms/dashboard.git
 WORKDIR /var/www/html/emoncms/Modules
-RUN git clone https://github.com/emoncms/graph.git 
+RUN git clone https://github.com/emoncms/graph.git
+RUN chown -R www-data:root /var/www/html/emoncms
 
 # Copy in settings from defaults
 # WORKDIR /var/www/html/emoncms/
@@ -52,9 +53,9 @@ COPY docker.settings.php /var/www/html/emoncms/settings.php
 RUN mkdir /var/lib/phpfiwa
 RUN mkdir /var/lib/phpfina
 RUN mkdir /var/lib/phptimeseries
-RUN chown www-data:root /var/lib/phpfiwa
-RUN chown www-data:root /var/lib/phpfina
-RUN chown www-data:root /var/lib/phptimeseries
+RUN chown -R www-data:root /var/lib/phpfiwa
+RUN chown -R www-data:root /var/lib/phpfina
+RUN chown -R www-data:root /var/lib/phptimeseries
 
 # Create Emoncms logfile
 RUN touch /var/log/emoncms.log

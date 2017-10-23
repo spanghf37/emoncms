@@ -51,28 +51,27 @@ RUN chown -R www-data:root /var/www/html/emoncms
 COPY docker.settings.php /var/www/html/emoncms/settings.php
 
 # Create folders & set permissions for feed-engine data folders (mounted as docker volumes in docker-compose)
-RUN mkdir /var/lib/phpfiwa
-RUN mkdir /var/lib/phpfina
-RUN mkdir /var/lib/phptimeseries
-RUN chown -R www-data:root /var/lib/phpfiwa
-RUN chown -R www-data:root /var/lib/phpfina
-RUN chown -R www-data:root /var/lib/phptimeseries
+RUN mkdir /var/lib/phpfiwa \
+    mkdir /var/lib/phpfina \
+    mkdir /var/lib/phptimeseries \ 
+    chown -R www-data:root /var/lib/phpfiwa \
+    chown -R www-data:root /var/lib/phpfina \
+    chown -R www-data:root /var/lib/phptimeseries
 
 # Create Emoncms logfile
-RUN touch /var/log/emoncms.log
-RUN chmod 666 /var/log/emoncms.log
+RUN touch /var/log/emoncms.log \
+    chmod 666 /var/log/emoncms.log
 
 # Install composer in /usr/lib folder
 WORKDIR /usr/lib
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    && php composer-setup.php \
-    && php -r "unlink('composer-setup.php');"
+    php composer-setup.php \
+    php -r "unlink('composer-setup.php');"
 
 # Install swiftmailer
 RUN php /usr/lib/composer.phar require swiftmailer/swiftmailer @stable
 
 WORKDIR /var/www/html/emoncms/Lib #email_fix see https://github.com/carboncoop/emoncms/edit/NEF_SRH/Lib/email.php
 RUN rm email.php \                #email_fix see https://github.com/carboncoop/emoncms/edit/NEF_SRH/Lib/email.php
-WORKDIR /var/www/html/emoncms/Lib #email_fix see https://github.com/carboncoop/emoncms/edit/NEF_SRH/Lib/email.php
-RUN wget https://raw.githubusercontent.com/spanghf37/emoncms/amd64/email_fix/email.php #email_fix see https://github.com/carboncoop/emoncms/edit/NEF_SRH/Lib/email.php
+    wget https://raw.githubusercontent.com/spanghf37/emoncms/amd64/email_fix/email.php #email_fix see https://github.com/carboncoop/emoncms/edit/NEF_SRH/Lib/email.php
 

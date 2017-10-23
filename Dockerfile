@@ -5,13 +5,13 @@ FROM amd64/php:apache-jessie
   
 # ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update \
-    apt-get upgrade \
-    apt-get dist-upgrade -y
+    && apt-get upgrade \
+    && apt-get dist-upgrade -y
 
 RUN apt-get install apt-transport-https lsb-release ca-certificates wget -y \
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
-    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list \
-    apt-get update
+    && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list \
+    && apt-get update
 
 RUN apt-get install libcurl4-gnutls-dev php7.1-curl php7.1-json php7.1-mcrypt php7.1-mysql git-core libmcrypt-dev -y
 
@@ -52,21 +52,21 @@ COPY docker.settings.php /var/www/html/emoncms/settings.php
 
 # Create folders & set permissions for feed-engine data folders (mounted as docker volumes in docker-compose)
 RUN mkdir /var/lib/phpfiwa \
-    mkdir /var/lib/phpfina \
-    mkdir /var/lib/phptimeseries \ 
-    chown -R www-data:root /var/lib/phpfiwa \
-    chown -R www-data:root /var/lib/phpfina \
-    chown -R www-data:root /var/lib/phptimeseries
+    && mkdir /var/lib/phpfina \
+    && mkdir /var/lib/phptimeseries \ 
+    && chown -R www-data:root /var/lib/phpfiwa \
+    && chown -R www-data:root /var/lib/phpfina \
+    && chown -R www-data:root /var/lib/phptimeseries
 
 # Create Emoncms logfile
 RUN touch /var/log/emoncms.log \
-    chmod 666 /var/log/emoncms.log
+    && chmod 666 /var/log/emoncms.log
 
 # Install composer in /usr/lib folder
 WORKDIR /usr/lib
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    php composer-setup.php \
-    php -r "unlink('composer-setup.php');"
+    && php composer-setup.php \
+    && php -r "unlink('composer-setup.php');"
 
 # Install swiftmailer
 RUN php /usr/lib/composer.phar require swiftmailer/swiftmailer @stable

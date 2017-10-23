@@ -16,8 +16,9 @@ RUN apt-get update
 RUN apt-get install libcurl4-gnutls-dev php7.1-curl php7.1-json php7.1-mcrypt php7.1-mysql git-core libmcrypt-dev -y
 
 # Install pecl dependencies
-RUN pear channel-discover pear.swiftmailer.org
-RUN pecl install swift/swift dio-0.0.9 redis
+# RUN pear channel-discover pear.swiftmailer.org  #email_fix
+# RUN pecl install swift/swift dio-0.0.9 redis #email_fix
+RUN pecl install dio redis
 
 RUN docker-php-ext-install -j$(nproc) mysqli curl json mcrypt gettext
 RUN docker-php-ext-enable redis
@@ -69,3 +70,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 # Install swiftmailer
 RUN php /usr/lib/composer.phar require swiftmailer/swiftmailer @stable
+
+WORKDIR /var/www/html/emoncms/Lib #email_fix
+RUN rm email.php \                #email_fix
+    && wget https://raw.githubusercontent.com/spanghf37/emoncms/amd64/email_fix/email.php #email_fix
+

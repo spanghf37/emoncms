@@ -4,14 +4,14 @@ FROM amd64/php:apache-jessie
 # COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static   
   
 # ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update
-RUN apt-get upgrade
-RUN apt-get dist-upgrade -y
+RUN apt-get update \
+    apt-get upgrade \
+    apt-get dist-upgrade -y
 
-RUN apt-get install apt-transport-https lsb-release ca-certificates wget -y
-RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
-RUN apt-get update
+RUN apt-get install apt-transport-https lsb-release ca-certificates wget -y \
+    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list \
+    apt-get update
 
 RUN apt-get install libcurl4-gnutls-dev php7.1-curl php7.1-json php7.1-mcrypt php7.1-mysql git-core libmcrypt-dev -y
 

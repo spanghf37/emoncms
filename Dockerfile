@@ -76,4 +76,4 @@ RUN rm /var/www/html/emoncms/Lib/email.php
 WORKDIR /var/www/html/emoncms/Lib
 RUN wget https://raw.githubusercontent.com/spanghf37/emoncms/amd64/email_fix/email.php
 
-RUN find / -iname swift_required.php
+RUN chown -R www-data:root /var/www/html/emoncms

@@ -18,7 +18,7 @@ class Email {
         // path from module lib
         if (!$this->have_swift) {
             //$this->have_swift = @include_once ("Lib/swiftmailer/swift_required.php");
-            $this->have_swift = require_once ("/usr/local/lib/php/swift_required.php");
+            $this->have_swift = require_once ("/usr/lib/vendor/swiftmailer/swiftmailer/lib/swift_required.php");
         }
         if ($this->have_swift) {
             $this->message = new Swift_Message();

@@ -9,7 +9,7 @@ RUN apt-get update \
     apt-get dist-upgrade -y
 
 RUN apt-get install apt-transport-https lsb-release ca-certificates wget -y \
-    wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
+RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list \
     apt-get update
 

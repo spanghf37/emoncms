@@ -28,7 +28,7 @@ services:
       - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
   redis:
     # Official redis image
-    image: amd64/redis:latest
+    image: amd64/redis:3.2
     volumes:
       - /mnt/data/configs/emoncms/emon-redis-data:/data
 

@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 
 services:
 
@@ -23,6 +23,7 @@ services:
   # MYSQL Database
   db:
     # Official MYSQL docker image
+    env_file: emoncms.docker-env
     image: amd64/mysql:latest
     restart: always
     environment:

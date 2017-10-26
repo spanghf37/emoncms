@@ -1,6 +1,6 @@
 # Base docker compose, added to by docker-compose.override or docker-compose.prod. See Readme.md
 
-version: '3'
+version: '2.1'
 
 services:
 
@@ -18,12 +18,21 @@ services:
       # Link to MYSQL DB (see below)
       - db
       - redis
+     depends_on:
+      db:
+        condition: service_healthy
   # MYSQL Database
   db:
     # Official MYSQL docker image
     image: amd64/mysql:latest
     environment:
       - "MYSQL_HOST=localhost"
+    restart: always
+    healthcheck:
+      test: "/usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD --execute \"SHOW DATABASES;\""
+      interval: 3s
+      timeout: 1s
+      retries: 5
     volumes:
       - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
   redis:

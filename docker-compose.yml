@@ -18,7 +18,7 @@ services:
       # Link to MYSQL DB (see below)
       - db
       - redis
-     depends_on:
+    depends_on:
       db:
         condition: service_healthy
   # MYSQL Database

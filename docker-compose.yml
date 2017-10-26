@@ -44,6 +44,10 @@ services:
     image: amd64/redis:latest
     env_file:
       - '.env'
+    healthcheck:
+      test: "curl -f http://localhost:80/emoncms"
+      interval: 1s
+      retries: 120
     restart: always
     volumes:
       - /mnt/data/configs/emoncms/emon-redis-data:/data

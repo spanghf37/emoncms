@@ -3,6 +3,7 @@ version: '2.1'
 services:
 
   web:
+    env_file: .env
     image: spanghf37/emoncms:amd64
     build: .
     volumes:

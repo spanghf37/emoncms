@@ -1,12 +1,8 @@
-# Base docker compose, added to by docker-compose.override or docker-compose.prod. See Readme.md
-
 version: '2.1'
 
 services:
 
-  # PHP & apache container using offical Docker PHP iamge
   web:
-    # If pre-built image from docker hub exists then use that (docker pull openenergymonitor/emoncms) if not Buildcontainer see Dockerflile
     image: spanghf37/emoncms:amd64
     build: .
     volumes:
@@ -29,8 +25,13 @@ services:
     # Official MYSQL docker image
     image: amd64/mysql:latest
     restart: always
-    env_file:
-      - 'emoncms.docker-env'
+    environment:
+      MYSQL_HOST=db
+      MYSQL_PORT=3306
+      MYSQL_DATABASE=emoncms
+      MYSQL_USER=emoncms
+      MYSQL_PASSWORD=YOUR_SECURE_PASSWORD
+      MYSQL_RANDOM_ROOT_PASSWORD=yes
     healthcheck:
       test: "/usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD --execute \"SHOW DATABASES;\""
       interval: 3s

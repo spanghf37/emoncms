@@ -20,8 +20,8 @@ services:
       - redis
     healthcheck:
       test: "curl -f http://localhost:80/emoncms"
-      interval: 1s
-      retries: 120
+      interval: 5s
+      retries: 10
     depends_on:
       db:
         condition: service_healthy
@@ -35,9 +35,9 @@ services:
     restart: always
     healthcheck:
       test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --execute \"SHOW DATABASES;\""
-      interval: 3s
-      timeout: 1s
-      retries: 10
+      interval: 5s
+      timeout: 5s
+      retries: 20
     restart: always
     volumes:
       - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
@@ -48,8 +48,8 @@ services:
       - '.env'
     healthcheck:
       test: ["CMD", "redis-cli","ping"]
-      interval: 1s
-      retries: 120
+      interval: 5s
+      retries: 10
     restart: always
     volumes:
       - /mnt/data/configs/emoncms/emon-redis-data:/data

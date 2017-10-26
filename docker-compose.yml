@@ -28,8 +28,6 @@ services:
   db:
     # Official MYSQL docker image
     image: amd64/mysql:latest
-    environment:
-      - "MYSQL_HOST=localhost"
     restart: always
     env_file:
       - 'emoncms.docker-env'

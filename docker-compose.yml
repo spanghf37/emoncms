@@ -45,7 +45,7 @@ services:
     env_file:
       - '.env'
     healthcheck:
-      test: "curl -f http://localhost:80/emoncms"
+      test: ["CMD", "redis-cli","ping"]
       interval: 1s
       retries: 120
     restart: always

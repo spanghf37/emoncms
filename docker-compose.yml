@@ -18,6 +18,10 @@ services:
       # Link to MYSQL DB (see below)
       - db
       - redis
+    healthcheck:
+      test: "curl -f http://localhost:80/emoncms"
+      interval: 1s
+      retries: 120
     depends_on:
       db:
         condition: service_healthy

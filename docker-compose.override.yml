@@ -1,6 +1,6 @@
 # dev enviroment setup
 
-version: '3'
+version: '2.1'
 services:
 
   web:

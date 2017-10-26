@@ -26,15 +26,8 @@ services:
     env_file: .env
     image: amd64/mysql:latest
     restart: always
-    environment:
-      MYSQL_HOST: db
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_RANDOM_ROOT_PASSWORD: yes
     healthcheck:
-      test: "/usr/bin/mysql --user=${DB_USERNAME} --password=${DB_PASSWORD} --execute \"SHOW DATABASES;\""
+      test: "/usr/bin/mysql --user=${MYSQL_USER} --password=${MYSQL_PASSWORD} --execute \"SHOW DATABASES;\""
       interval: 3s
       timeout: 1s
       retries: 5

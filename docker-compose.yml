@@ -14,6 +14,9 @@ services:
       - /mnt/data/configs/emoncms/emon-phpfiwa:/var/lib/phpfiwa
       - /mnt/data/configs/emoncms/emon-phpfina:/var/lib/phpfina
       - /mnt/data/configs/emoncms/emon-phptimeseries:/var/lib/phptimeseries
+    ports:
+      # Expose Emoncms on localhost port 8080
+      - 8080:80
     links:
       # Link to MYSQL DB (see below)
       - db
@@ -28,27 +31,28 @@ services:
     environment:
       - "MYSQL_HOST=localhost"
     restart: always
+    env_file:
+      - 'emoncms.docker-env'
     healthcheck:
       test: "/usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD --execute \"SHOW DATABASES;\""
       interval: 3s
       timeout: 1s
       retries: 5
+    restart: always
     volumes:
       - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
   redis:
     # Official redis image
     image: amd64/redis:latest
+    env_file:
+      - 'emoncms.docker-env'
+    restart: always
     volumes:
       - /mnt/data/configs/emoncms/emon-redis-data:/data
 
 volumes:
   emon-phpfiwa:
- #   driver: local
   emon-phpfina:
- #   driver: local
   emon-phptimeseries:
- #   driver: local
   emon-db-data:
- #   driver: local
   emon-redis-data:
- #   driver: local

@@ -1,6 +1,6 @@
 # Base docker compose, added to by docker-compose.override or docker-compose.prod. See Readme.md
 
-version: '3'
+version: '2.1'
 
 services:
 

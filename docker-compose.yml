@@ -40,10 +40,15 @@ services:
     volumes:
       - /mnt/data/configs/emoncms/emon-db-data:/var/lib/mysql
   redis:
-    # Official redis image
-    image: amd64/redis:latest
     env_file:
       - '.env'
+    # Official redis image
+    image: amd64/redis:latest
+    healthcheck:
+      test: ["CMD", "redis-cli","ping"]
+        interval: 30s
+        timeout: 10s
+        retries: 3
     restart: always
     volumes:
       - /mnt/data/configs/emoncms/emon-redis-data:/data

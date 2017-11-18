@@ -4,8 +4,8 @@ FROM amd64/php:apache-jessie
 # COPY tmp/qemu-aarch64-static /usr/bin/qemu-aarch64-static   
   
 # ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
-    && apt-get upgrade \
+RUN apt-get update -y \
+    && apt-get upgrade -y \
     && apt-get dist-upgrade -y
 
 RUN apt-get install apt-transport-https lsb-release ca-certificates wget -y

@@ -1,15 +1,14 @@
-![Build Status](https://travis-ci.org/spanghf37/emoncms.svg?branch=master)
+![Build Status](https://travis-ci.org/spanghf37/emoncms.svg?branch=amd64)
 
 # emoncms
-emoncms docker container for raspberry-pi 64bits
+emoncms docker container for amd 64bits
 
 # 1. Configuration files
 
-Copy and edit ```config.json``` and ```knx_config.json``` to ```/home/docker/homebridge``` on the Raspberry Pi.
+Copy and edit ```.env``` from knx-control installation.
 
-# 2. docker run command
+# 2. docker-compose
 
 ```
-docker run --restart=always -t -i --net=host -v "/etc/mysql":"/tmp/mysql" -v "/var/lib/mysql":"/tmp/mysql" -v "/var/lib/phpfiwa":"/tmp/phpfiwa" -v "/var/lib/phpfina":"/tmp/phpfina" -v "/var/lib/phptimeseries":"/tmp/phptimeseries" -v "/var/www/html":"/tmp/html" -v "/etc/localtime":"/etc/localtime":ro spanghf37/emoncms:latest
+docker-compose up
 ```
-Change tmp to your preferred location on the host.
